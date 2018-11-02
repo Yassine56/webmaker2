@@ -1,0 +1,19 @@
+<div class="container">
+
+  <form class="form-style" (ngSubmit)="login()">
+    <h3 class="form-style-heading">Login</h3>
+    <hr><br>
+    <div *ngIf="error_flag" class="alert alert-danger">Invalid User!!</div>
+    <div class="form-group">
+      <input type="text" id="username" name="username" class="form-control" placeholder="username" [(ngModel)]="username">
+    </div>
+    <div class="form-group">
+      <input type="password" id="password" name="password" class="form-control" placeholder="password" [(ngModel)]="password">
+    </div>
+    <div>
+      <button class="btn btn-primary btn-block" type="submit">Login</button>
+      <!--<a routerLink="/user/:uid" class="btn btn-primary btn-block">Login</a>-->
+      <a routerLink="/register" class="btn btn-success btn-block">Register</a>
+    </div>
+  </form>
+</div>
