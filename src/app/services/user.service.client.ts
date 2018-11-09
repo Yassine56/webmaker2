@@ -6,27 +6,35 @@ export class UserService {
   users = [
     {
       id: "123",
-      username: "meriem",
-      password: "meriem",
-      firstName: "meriem",
-      lastName: "saaid",
-      email: "meriem.saaid@gmail.com"
+      username: "alice",
+      password: "alice",
+      firstName: "Alice",
+      lastName: "Wonder",
+      email: "alice@gmail.com"
+    },
+    {
+      id: "234",
+      username: "bob",
+      password: "bob",
+      firstName: "Bob",
+      lastName: "Marley",
+      email: "bob@gmail.com"
+    },
+    {
+      id: "345",
+      username: "charly",
+      password: "charly",
+      firstName: "Charly",
+      lastName: "Gacia",
+      email: "charly@gmail.com"
     },
     {
       id: "456",
-      username: "ahmed",
-      password: "ahmed",
-      firstName: "ahmed",
-      lastName: "bella",
-      email: "ahmed.bella@gmail.com"
-    },
-    {
-      id: "789",
-      username: "yassine",
-      password: "yassine",
-      firstName: "yassine",
-      lastName: "bella",
-      email: "yassine.bella@gmail.com"
+      username: "meriem",
+      password: "meriem",
+      firstName: "Meriem",
+      lastName: "Saaid",
+      email: "meriem.saaid@gmail.com"
     }
   ];
 

@@ -2,8 +2,15 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { Routing } from "./app.routing";
 import { HttpModule } from "@angular/http";
-import { FormsModule } from "@angular/forms";
+import {
+  FormsModule,
+  FormBuilder,
+  Validators,
+  ReactiveFormsModule
+} from "@angular/forms";
 import { UserService } from "./services/user.service.client";
+import { WebsiteService } from "./services/website.service.client";
+
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./components/user/login/login.component";
 import { ProfileComponent } from "./components/user/profile/profile.component";
@@ -20,6 +27,8 @@ import { WidgetListComponent } from "./components/widget/widget-list/widget-list
 import { WidgetHeaderComponent } from "./components/widget/widget-edit/widget-header/widget-header.component";
 import { WidgetImageComponent } from "./components/widget/widget-edit/widget-image/widget-image.component";
 import { WidgetYoutubeComponent } from "./components/widget/widget-edit/widget-youtube/widget-youtube.component";
+import { PageService } from "./services/page.service.client";
+import { WidgetService } from "./services/widget.service.client";
 
 @NgModule({
   declarations: [
@@ -40,8 +49,14 @@ import { WidgetYoutubeComponent } from "./components/widget/widget-edit/widget-y
     WidgetImageComponent,
     WidgetYoutubeComponent
   ],
-  imports: [BrowserModule, Routing, HttpModule, FormsModule],
-  providers: [UserService],
+  imports: [
+    BrowserModule,
+    Routing,
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [UserService, WebsiteService, PageService, WidgetService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

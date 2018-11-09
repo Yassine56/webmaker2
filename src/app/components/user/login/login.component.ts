@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/services/user.service.client";
 import { NgModule } from "@angular/core";
 import { Router } from "@angular/router";
+import { FormsModule } from "@angular/forms";
+import { User } from "src/app/models/user.model.client";
 
 @Component({
   selector: "app-login",
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
   login() {
     //console.log(this.username);
-    let user = this.userservice.findUserByCredentials(
+    let user: User = this.userservice.findUserByCredentials(
       this.username,
       this.password
     );

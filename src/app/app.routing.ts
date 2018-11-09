@@ -37,7 +37,7 @@ const APP_ROUTES: Routes = [
     component: WidgetChooserComponent
   },
   {
-    path: "user/:uid/website/:wid/page/:pid/:wgid",
+    path: "user/:uid/website/:wid/page/:pid/widget/:wgid",
     component: WidgetEditComponent
   }
 ];

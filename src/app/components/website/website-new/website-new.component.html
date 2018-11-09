@@ -1,99 +1,120 @@
-<!--Navbar-->
+<!-- Navbar -->
 <nav class="navbar navbar-dark bg-dark fixed-top row nav-height">
   <!-- Left Nav -->
   <div class="col-4 d-none d-sm-block">
-    <a class="color-white" routerLink="/user/:uid/website">
+    <a class="color-white" routerLink="/user/{{uid}}/website">
       <i class="fas fa-chevron-left"></i>
     </a>
 
-    <a class="color-white padding-left" href="#">
-      <h5 class='display-inline a-color'>Websites</h5>
+    <a class="color-white padding-left" routerLink="/user/{{uid}}/website/new">
+      <h5 class="display-inline a-color">Websites</h5>
     </a>
 
-    <a class="color-white float-right" routerLink="/user/:uid/website/new">
+    <a class="color-white float-right" routerLink="/user/{{uid}}/website/new">
       <i class="fas fa-plus"></i>
     </a>
   </div>
   <!-- Right Nav -->
   <div class="col-sm-8">
-    <a class="color-white d-sm-none" routerLink="/user/:uid/website">
+    <a class="color-white d-sm-none" routerLink="/user/{{uid}}/website">
       <i class="fas fa-chevron-left"></i>
     </a>
     <a class="color-white padding-left" href="#">
       <h5 class="display-inline a-color">New Website</h5>
     </a>
-    <a class="color-white float-right" routerLink="/user/:uid/website">
+    <a class="color-white float-right" routerLink="/user/{{uid}}/website">
       <i class="fas fa-check"></i>
     </a>
   </div>
 </nav>
 <!-- list and form -->
 <div class="row container-fluid">
-  <!--Left list-->
+  <!-- Left list -->
   <div class="col-4 d-none d-sm-block">
     <div class="container div-backgound">
-
       <ul class="list-group">
-        <li class="list-group-item list-group-item">
-          <a routerLink="/user/:uid/website/:wid/page">
-            Address book App
+        <li class="list-group-item" *ngFor="let website of websites">
+          <a routerLink="/user/{{uid}}/website/{{website.id}}/page">
+            {{ website.name }}
           </a>
-          <a routerLink="/user/:uid/website/:wid" class="float-right" title="Edit">
-            <i class="fas fa-cog"></i>
-          </a>
-        </li>
-        <li class="list-group-item list-group-item">
-          <a routerLink="/user/:uid/website/:wid/page" title="Edit">
-            Blogger
-          </a>
-          <a routerLink="/user/:uid/website/:wid" class="float-right" title="Edit">
-            <i class=" fas fa-cog"></i>
-          </a>
-        </li>
-        <li class="list-group-item list-group-item">
-          <a routerLink="/user/:uid/website/:wid/page" title="Edit">
-            Blogging App
-          </a>
-          <a routerLink="/user/:uid/website/:wid" class="float-right" title="Edit">
-            <i class="fas fa-cog"></i>
-          </a>
-        </li>
-        <li class="list-group-item list-group-item">
-          <a routerLink="/user/:uid/website/:wid/page">Script Testing app</a>
-          <a routerLink="/user/:uid/website/:wid" class="float-right" title="Edit">
-            <i class="fas fa-cog"></i>
-          </a>
+          <a
+            class="float-right"
+            routerLink="/user/{{uid}}/website/{{website.id}}"
+            ><i class="fas fa-cog"></i
+          ></a>
         </li>
       </ul>
-
     </div>
   </div>
-  <!--Right form-->
+  <!-- Right form -->
   <div class="col-sm-8">
     <div class="container-fluid div-backgound">
-      <form action="">
+      <form
+        (ngSubmit)="createWebsite()"
+        id="myCreateForm"
+        #myCreateForm="ngForm"
+      >
         <div class="form-group">
           <label for="name"><b>Name</b></label>
-          <input type="text" id="name" class="form-control" placeholder="Name">
+          <input
+            type="text"
+            #nameInput="ngModel"
+            required
+            name="name"
+            class="form-control"
+            placeholder="Name"
+            [(ngModel)]="name"
+          />
+        </div>
+        <div
+          *ngIf="nameInput.invalid && nameInput.touched"
+          class="alert alert-danger"
+        >
+          Name is required
         </div>
         <div class="form-group">
           <label for="description"><b>Description</b></label>
-          <textarea type="text" class="form-control" id="description" rows="5" placeholder="Describe you website"></textarea>
+          <textarea
+            type="text"
+            #descInput="ngModel"
+            required
+            class="form-control"
+            name="description"
+            rows="5"
+            placeholder="Describe you website"
+            [(ngModel)]="description"
+          ></textarea>
+        </div>
+        <div
+          *ngIf="descInput.invalid && descInput.touched"
+          class="alert alert-danger"
+        >
+          Description is required
         </div>
         <div class="float-right">
-          <a routerLink="/user/:uid/website" class="btn btn-success center-block">Submit</a>
-          <a routerLink="/user/:uid/website" class="btn btn-warning center-block">Cancel</a>
+          <button
+            type="submit"
+            class="btn btn-success float-left"
+            form="myCreateForm"
+            [disabled]="myCreateForm.invalid"
+          >
+            Submit
+          </button>
+          <a
+            routerLink="/user/{{uid}}/website"
+            class="btn btn-warning center-block"
+            >Cancel</a
+          >
         </div>
       </form>
-
     </div>
   </div>
 </div>
-<!--Footer-->
+<!-- Footer -->
 <footer class="navbar navbar-dark bg-dark fixed-bottom">
   <!-- Navbar content -->
   <div class="full-width">
-    <a class="color-white float-right" routerLink="/user/:uid">
+    <a class="color-white float-right" routerLink="/user/{{uid}}">
       <i class="fas fa-user"></i>
     </a>
   </div>

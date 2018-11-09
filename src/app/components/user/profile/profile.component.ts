@@ -10,7 +10,7 @@ import { FormsModule } from "@angular/forms";
   styleUrls: ["./profile.component.css"]
 })
 export class ProfileComponent implements OnInit {
-  userId: string;
+  uid: string;
   oldUsername: string;
   user;
   userError: boolean;
@@ -23,8 +23,8 @@ export class ProfileComponent implements OnInit {
   //Initilize the form
   ngOnInit() {
     this.activerouter.params.subscribe(params => {
-      (this.userId = params["uid"]),
-        (this.user = this.userservice.findUserById(this.userId)),
+      (this.uid = params["uid"]),
+        (this.user = this.userservice.findUserById(this.uid)),
         //console.log(this.user),
         (this.oldUsername = this.user.username);
     });

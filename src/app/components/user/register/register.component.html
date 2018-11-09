@@ -1,23 +1,77 @@
-<!--Form register-->
+<!-- Form register -->
 <div class="container">
-  <form id="register_Form" class="form-style" (ngSubmit)="register()">
-    <div *ngIf="user_error" class="alert alert-danger">This username exist!!</div>
-    <div *ngIf="pwd_error" class="alert alert-danger">The verify password is different d'un password!!</div>
+  <form
+    [formGroup]="register_Form"
+    class="form-style"
+    (ngSubmit)="register()"
+    #myRegForm="ngForm"
+  >
+    <div *ngIf="user_error" class="alert alert-danger">
+      This username exist!!
+    </div>
+    <div *ngIf="pwd_error" class="alert alert-danger">
+      The verify password is different d'un password!!
+    </div>
     <fieldset>
       <legend class="text-center">Register</legend>
       <div class="form-group">
-        <input type="text" name="username" class="form-control" placeholder="username" [(ngModel)]="username">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="username"
+          formControlName="username"
+        />
+      </div>
+      <!--
+        <div *ngIf="submitted && f.username.errors.required" class="alert alert-danger">Username is required!!</div>
+      -->
+
+      <div *ngIf="submitted && !f.username.valid" class="alert alert-danger">
+        Username is required
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="password"
+          formControlName="password"
+        />
+      </div>
+      <div *ngIf="submitted && !f.password.valid" class="alert alert-danger">
+        Password is required
       </div>
       <div class="form-group">
-        <input type="password" name="psw" class="form-control" placeholder="password" [(ngModel)]="password">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="verify password"
+          formControlName="verifPassword"
+        />
       </div>
-      <div class="form-group">
-        <input type="password" name="psw_verif" class="form-control" placeholder="verify password" [(ngModel)]="verifPassword">
+      <div
+        *ngIf="submitted && !f.verifPassword.valid"
+        class="alert alert-danger"
+      >
+        verify password is required
       </div>
       <div>
-        <!-- <a routerLink="/user/:uid" href="profile.html" class="btn btn-primary btn-block ">Register</a>-->
-        <button class="btn btn-primary btn-block" form="register_Form">Register</button>
-        <a routerLink="/login" href="login.html" class="btn btn-danger btn-block">Cancel</a>
+        <!--
+          <a routerLink="/user/:uid" href="profile.html" class="btn btn-primary btn-block ">Register</a>
+        -->
+        <button
+          class="btn btn-primary btn-block"
+          type="submit"
+          [disabled]="myRegForm.invalid"
+        >
+          Register
+        </button>
+        <a
+          routerLink="/login"
+          href="login.html"
+          class="btn btn-danger btn-block"
+          >Cancel</a
+        >
       </div>
     </fieldset>
   </form>
