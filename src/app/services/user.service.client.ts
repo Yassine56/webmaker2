@@ -27,14 +27,6 @@ export class UserService {
       firstName: "Charly",
       lastName: "Gacia",
       email: "charly@gmail.com"
-    },
-    {
-      id: "456",
-      username: "meriem",
-      password: "meriem",
-      firstName: "Meriem",
-      lastName: "Saaid",
-      email: "meriem.saaid@gmail.com"
     }
   ];
 

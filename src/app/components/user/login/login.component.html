@@ -1,9 +1,9 @@
 <div class="container">
-  <form class="form-style" (ngSubmit)="login()" #myLoginForm="ngForm">
+  <form  (ngSubmit)="login()" #myLoginForm="ngForm">
     <h3 class="form-style-heading">Login</h3>
     <hr />
     <br />
-    <div *ngIf="error_flag" class="alert alert-danger">Invalid User!!</div>
+    <div *ngIf="error_flag" class="aslert alert-danger">Invalid User!!</div>
     <div class="form-group">
       <input
         type="text"
